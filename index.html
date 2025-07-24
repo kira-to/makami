@@ -99,6 +99,28 @@
         }
     </style>
     <link rel="stylesheet" href="assets/css/style.css">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XJ8JMFNRFE"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){ dataLayer.push(arguments); }
+      gtag('js', new Date());
+
+      // サイト区分（100名城 or プロフィール）を user_properties に付与
+      const section = location.pathname.startsWith('/makami-fan') ? 'castle' :
+                      location.pathname.startsWith('/makami')     ? 'profile' : 'other';
+
+      gtag('config', 'G-XJ8JMFNRFE', {
+        debug_mode: false,
+        send_page_view: true
+      });
+
+      // user_properties は GA4 の「ユーザー属性」で保持され、レポートの比較条件に使えます
+      gtag('set', 'user_properties', {
+        site_section: section
+      });
+    </script>
 </head>
 <body>
 
